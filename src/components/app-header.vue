@@ -1,8 +1,8 @@
 <template>
   <header class="main">
     <div class="navigation">
-        <router-link id="home" to="/">Home</router-link>
-        <router-link id="about" to="/about">About</router-link>
+      <router-link id="home" to="/home">Home</router-link>
+      <router-link id="feed" to="/">Feed</router-link>
     </div>
   </header>
 </template>
@@ -12,7 +12,6 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "AppHeader",
-  props: {},
 });
 </script>
 
@@ -33,17 +32,20 @@ export default defineComponent({
   padding-left: 15%;
 }
 
-.navigation > *{
+.navigation > * {
   text-decoration: none;
   display: block;
   padding: 1em;
   color: white;
   font-weight: bold;
   padding: auto;
-  
 }
 
 .navigation > *:hover {
+  background: rgb(83, 140, 204);
+}
+
+.router-link-active {
   background: rgb(83, 140, 204);
 }
 </style>

@@ -1,17 +1,28 @@
 <template>
-  <div class="mainsec">
-    <NewsFeed />
+  <div class="about">
+    <h2>A Vue Newsfeed Project created by:</h2>
+    <p>Joshua Rhey D. Umbac</p>
+
+    <h3>Made using Vue.js with Typescript</h3>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import NewsFeed from "@/components/news-feed.vue"; // @ is an alias to /src
+<style scoped>
+.about {
+  background: rgb(238, 238, 238);
+  padding: 30px;
+  margin: 0 auto;
+  width: 40%;
+  max-width: 500px;
+  border-radius: 20px;
+  box-shadow: 5px 5px 5px rgba(212, 212, 212, 0.5);
+}
+.about > * {
+  margin: 50px auto;
+  color: rgb(98, 112, 124);
+}
 
-export default defineComponent({
-  name: "Main",
-  components: {
-    NewsFeed,
-  },
-});
-</script>
+p {
+  font-size: 1.5em;
+}
+</style>
