@@ -1,21 +1,30 @@
 <template>
-  <div class="about">
-    <h2>A Vue Newsfeed Project created by:</h2>
-    <p>Joshua Rhey D. Umbac</p>
+  <div class="bod">
+    <div class="about">
+      <h2>A Vue Newsfeed Project created by:</h2>
+      <p>Joshua Rhey D. Umbac</p>
 
-    <h3>Made using Vue.js with Typescript</h3>
+      <h3>Made using Vue.js with Typescript</h3>
+    </div>
   </div>
 </template>
 
 <style scoped>
+.bod {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .about {
-  background: rgb(238, 238, 238);
+  background: rgb(255, 255, 255);
+  position: absolute;
+  top: 15%;
   padding: 30px;
   margin: 0 auto;
   width: 40%;
   max-width: 500px;
   border-radius: 20px;
-  box-shadow: 5px 5px 5px rgba(212, 212, 212, 0.5);
+  box-shadow: 3px 3px 5px rgba(199, 199, 199, 0.5);
 }
 .about > * {
   margin: 50px auto;

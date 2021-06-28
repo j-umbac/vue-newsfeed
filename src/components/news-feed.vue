@@ -1,9 +1,11 @@
 <template>
-  <div id="postform">
-    <PostForm />
-  </div>
-  <div class="postfeed">
-    <PostList :posts="posts" />
+  <div class="body">
+    <div id="postform">
+      <PostForm />
+    </div>
+    <div class="postfeed">
+      <PostList :posts="posts" />
+    </div>
   </div>
 </template>
 
@@ -20,7 +22,7 @@ export default defineComponent({
     PostForm,
   },
   setup() {
-    const { posts, totalProps } = getPostFeed();
+    const { posts } = getPostFeed();
 
     return { posts };
   },
@@ -28,9 +30,13 @@ export default defineComponent({
 </script>
 
 <style>
+.body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background: rgb(245, 245, 245);
+}
 div #postform {
   display: grid;
-  /* grid-template-columns: repeat(4, 1fr); */
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   grid-auto-rows: minmax(200px, auto);
   grid-gap: 0px;
@@ -80,11 +86,11 @@ textarea {
 
 div #postform > * {
   grid-column: 1/-1;
-  background: rgb(241, 241, 241);
+  background: white;
   padding: 30px 30px 10px 30px;
   border-radius: 10px;
   margin: 10px;
-  box-shadow: 3px 3px 3px rgb(199, 199, 199);
+  box-shadow: 3px 3px 3px rgba(199, 199, 199, 0.25);
 }
 
 .buttons {

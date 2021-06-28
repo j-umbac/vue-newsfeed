@@ -1,7 +1,7 @@
 interface PostInterface {
     title: string,
     content: string,
-    id: number | string,
+    id: string,
 }
 
 export default PostInterface;

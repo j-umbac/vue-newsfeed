@@ -8,7 +8,6 @@
           v-model="post.title"
           required
         />
-        <p>ID: {{ post.id }}, Array index: {{ index }}</p>
         <textarea
           rows="10"
           placeholder="What's on your mind?"
@@ -19,7 +18,9 @@
       <div class="buttons">
         <button><router-link id="feed" to="/feed">Back</router-link></button>
         <div>
-          <button @click.prevent="saveEdit">Save Edit</button>
+          <button @click="saveEdit">
+            <router-link id="feed" to="/feed">Save Edit</router-link>
+          </button>
           <button @click.prevent="deletePost" id="deletBtn">
             <router-link id="feed" to="/feed">Delete</router-link>
           </button>
@@ -32,7 +33,7 @@
 <script lang="ts">
 import postList from "@/data/postData";
 import PostInterface from "@/interface/postInterface";
-import { defineComponent, ref } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 
 export default defineComponent({
   props: ["id"],
@@ -46,8 +47,10 @@ export default defineComponent({
       content: "",
       id: "",
     };
+    onMounted(() => {
+      console.log("Mounted");
+    });
 
-    console.log("Mounted");
     for (let i = 0; i < posts.value.length; i++) {
       if (posts.value[i].id === props.id) {
         console.log(posts.value[i].title);

@@ -1,5 +1,7 @@
 <template>
-  <div class="post-list">
+  <button @click="togglePost">Toggle Feed</button>
+
+  <div class="post-list" v-show="toggle">
     <div v-for="post in posts" :key="post.id" class="list">
       <SinglePost :post="post" />
     </div>
@@ -7,13 +9,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onUpdated, onMounted, ref } from "vue";
 import SinglePost from "./single-post.vue";
 
 export default defineComponent({
   name: "PostList",
   props: ["posts"],
   components: { SinglePost },
+  setup() {
+    const toggle = ref(true);
+
+    function togglePost() {
+      toggle.value = !toggle.value;
+    }
+
+    return { togglePost, toggle };
+  },
 });
 </script>
 
@@ -31,11 +42,11 @@ export default defineComponent({
 
 .post-list > * {
   grid-column: 1/-1;
-  background: rgb(241, 241, 241);
+  background: rgb(255, 255, 255);
 
   padding: 30px;
   border-radius: 10px;
   margin: 10px;
-  box-shadow: 3px 3px 3px rgb(199, 199, 199);
+  box-shadow: 3px 3px 3px rgba(199, 199, 199, 0.25);
 }
 </style>

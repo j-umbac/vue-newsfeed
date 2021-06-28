@@ -3,7 +3,7 @@
     <form>
       <input id="postTitle" placeholder="Title" v-model="title" required />
       <textarea
-        rows="3"
+        rows="4"
         placeholder="What's on your mind?"
         v-model="content"
         required
@@ -52,7 +52,7 @@ export default defineComponent({
 
     getPostFeed();
 
-    return { posts, content, title, publishPost, clearForm };
+    return { content, title, publishPost, clearForm };
   },
 });
 </script>

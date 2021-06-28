@@ -30,4 +30,8 @@ export default defineComponent({
   text-align: center;
   color: #2c3e50;
 }
+.route {
+  background: rgb(245, 245, 245);
+  height: 94.5vh;
+}
 </style>

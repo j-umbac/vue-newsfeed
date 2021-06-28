@@ -25,9 +25,8 @@ export default defineComponent({
   justify-content: flex-start;
   flex-flow: row wrap;
   list-style: none;
-  margin-bottom: 25px;
   background: rgb(110, 172, 243);
-  box-shadow: 0px 3px 5px rgb(199, 199, 199);
+  box-shadow: 0px 3px 5px rgba(199, 199, 199, 0.5);
   padding-left: 15%;
 }
 
