@@ -16,16 +16,11 @@ import PostForm from "./post-form.vue";
 export default defineComponent({
   name: "NewsFeed",
   components: {
-    //ViewPost,
     PostList,
     PostForm,
   },
   setup() {
     const { posts, totalProps } = getPostFeed();
-
-    onMounted(() => {
-      console.log(totalProps);
-    });
 
     return { posts };
   },

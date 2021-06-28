@@ -1,12 +1,14 @@
-import postList from "@/data/postData";
-import { ref } from "vue";
+// import postList from "@/data/postData";
+// import {  ref } from "vue";
 
-const getPost = (id: any) => {
-    const posts = ref(postList)
-    const post = posts.value[id];
+// function getPost(id: number){
+
+//     const posts = ref(postList);
 
 
-    return { post };
-}
 
-export default getPost
+
+//     return { post };
+// }
+
+// export default getPost

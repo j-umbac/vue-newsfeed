@@ -3,13 +3,13 @@ import { RouteRecordRaw } from "vue-router";
 
 const routes: RouteRecordRaw[] = [
   {
-    path: "/",
+    path: "/feed",
     name: "Feed",
     component: () =>
       import("../views/Feed.vue"),
   },
   {
-    path: "/home",
+    path: "/",
     name: "Home",
   
     component: () =>

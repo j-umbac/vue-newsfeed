@@ -1,8 +1,8 @@
 <template>
   <header class="main">
     <div class="navigation">
-      <router-link id="home" to="/home">Home</router-link>
-      <router-link id="feed" to="/">Feed</router-link>
+      <router-link id="home" to="/">Home</router-link>
+      <router-link id="feed" to="/feed">Feed</router-link>
     </div>
   </header>
 </template>
@@ -15,7 +15,6 @@ export default defineComponent({
 });
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .main h1 {
   color: rgb(226, 226, 226);

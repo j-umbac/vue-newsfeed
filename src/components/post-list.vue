@@ -1,33 +1,25 @@
 <template>
   <div class="post-list">
-    <div v-for="post in posts" :key="post" class="list">
-      <h3>{{ post.title }}</h3>
-      <br />
-      <p>{{ post.content.substring(0, 250) + "..." }}</p>
-      <div class="buttons">
-        <button>
-          <router-link :to="{ name: 'PostDetails', params: { id: post.id } }">
-            View
-          </router-link>
-        </button>
-      </div>
+    <div v-for="post in posts" :key="post.id" class="list">
+      <SinglePost :post="post" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from "vue";
+import { defineComponent } from "vue";
+import SinglePost from "./single-post.vue";
 
 export default defineComponent({
   name: "PostList",
   props: ["posts"],
+  components: { SinglePost },
 });
 </script>
 
 <style>
 .post-list {
   display: grid;
-  /* grid-template-columns: repeat(4, 1fr); */
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   grid-auto-rows: minmax(150px, auto);
   grid-gap: 0px;

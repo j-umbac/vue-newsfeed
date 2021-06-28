@@ -23,31 +23,34 @@ import { defineComponent, ref } from "vue";
 export default defineComponent({
   name: "PostForm",
   setup() {
-    const { posts, totalProps } = getPostFeed();
+    let { posts } = getPostFeed();
 
     const title = ref("");
     const content = ref("");
-    const post = {
-      title: title.value,
-      content: content.value,
-      id: totalProps + 1,
-    };
 
     function publishPost() {
       if (title.value !== "" && content.value !== "") {
         console.log("Post Added");
-        console.log(totalProps);
 
-        posts.value.unshift(post);
+        posts.value.unshift({
+          title: title.value,
+          content: content.value,
+          id: title.value + String(Math.round(Math.random() * 100)),
+        });
       } else {
         alert("Please complete the form");
       }
+
+      title.value = "";
+      content.value = "";
     }
 
     function clearForm() {
       title.value = "";
       content.value = "";
     }
+
+    getPostFeed();
 
     return { posts, content, title, publishPost, clearForm };
   },
