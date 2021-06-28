@@ -22,12 +22,11 @@ export default defineComponent({
 
 .navigation {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-flow: row wrap;
   list-style: none;
   background: rgb(110, 172, 243);
   box-shadow: 0px 3px 5px rgba(199, 199, 199, 0.5);
-  padding-left: 15%;
 }
 
 .navigation > * {
