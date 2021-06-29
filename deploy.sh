@@ -12,14 +12,15 @@ cd dist
 # if you are deploying to a custom domain
 # echo 'www.example.com' > CNAME
 
+
 git init
 git add -A
-git commit -m 'deploy'
+git commit -m 'Updated filename conventions'
 
 # if you are deploying to https://<USERNAME>.github.io
 # git push -f git@github.com:j-umbac/j-umbac.github.io.git main
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:j-umbac/vue-newsfeed.git main:gh-pages
+git push -f git@github.com:j-umbac/vue-newsfeed.git master:gh-pages   #<--- master:gh-pages
 
 cd -

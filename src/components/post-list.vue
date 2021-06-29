@@ -1,11 +1,12 @@
 <template>
   <button @click="togglePost">Toggle Feed</button>
-
-  <div class="post-list" v-show="toggle">
-    <div v-for="post in posts" :key="post.id" class="list">
+  <transition-group tag="div" name="listpost" class="post-list" appear>
+    <!-- <div class="post-list" v-show="toggle"> -->
+    <div v-for="post in posts" :key="post.id" class="list" v-show="toggle">
       <SinglePost :post="post" />
     </div>
-  </div>
+    <!-- </div> -->
+  </transition-group>
 </template>
 
 <script lang="ts">
@@ -19,9 +20,9 @@ export default defineComponent({
   setup() {
     const toggle = ref(true);
 
-    function togglePost() {
+    const togglePost = () => {
       toggle.value = !toggle.value;
-    }
+    };
 
     return { togglePost, toggle };
   },
@@ -29,6 +30,36 @@ export default defineComponent({
 </script>
 
 <style>
+/*List Animations*/
+.listpost-enter-from {
+  opacity: 0;
+  transform: scale(0.5);
+}
+.listpost-enter-to {
+  opacity: 1;
+  transform: scale(1);
+}
+.listpost-enter-active {
+  transition: all 0.4s ease;
+}
+
+.listpost-leave-from {
+  opacity: 1;
+  transform: scale(1);
+}
+.listpost-leave-to {
+  opacity: 0;
+  transform: scale(0.5);
+}
+.listpost-leave-active {
+  transition: all 0.4s ease;
+}
+
+.listpost-move {
+  transition: all 0.2s ease;
+}
+
+/*Styles*/
 .post-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -43,7 +74,6 @@ export default defineComponent({
 .post-list > * {
   grid-column: 1/-1;
   background: rgb(255, 255, 255);
-
   padding: 30px;
   border-radius: 10px;
   margin: 10px;

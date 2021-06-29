@@ -1,4 +1,4 @@
-import postList from "@/data/postData"
+import postList from "@/data/post-data"
 import { ref } from "vue";
 
 function getPostFeed(){

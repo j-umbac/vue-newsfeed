@@ -12,7 +12,7 @@
 <script lang="ts">
 import { defineComponent, onMounted } from "vue";
 import PostList from "./post-list.vue";
-import getPostFeed from "../composables/getPostFeed";
+import getPostFeed from "../composables/use-getPostFeed";
 import PostForm from "./post-form.vue";
 
 export default defineComponent({
@@ -59,29 +59,40 @@ div #postform {
 textarea {
   font-family: Arial, Helvetica, sans-serif;
   resize: vertical;
-  padding: 15px;
+  padding: 5px;
   text-align: left;
-  border-radius: 10px;
-  color: gray;
+  border-bottom: 2px solid rgb(240, 240, 240);
+  color: rgb(100, 100, 100);
   width: 100%;
-  height: 100%;
+  min-height: 40px;
   box-sizing: border-box;
-  border: 2px solid rgb(219, 219, 219);
   font-size: 1.2em;
+  resize: vertical;
+}
+#tArea {
+  height: 40px;
+  transition: height 0.2s ease-in;
+}
+
+#tArea:focus {
+  height: 200px;
 }
 
 #postTitle {
   font-family: Arial, Helvetica, sans-serif;
   resize: vertical;
-  padding: 15px;
+  padding: 5px;
+  padding-bottom: 20px;
   text-align: left;
-  border-radius: 10px;
-  color: gray;
+  color: rgb(100, 100, 100);
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  border: 2px solid rgb(219, 219, 219);
   font-size: 1.2em;
+}
+
+::placeholder {
+  color: rgb(175, 175, 175);
 }
 
 div #postform > * {
@@ -97,6 +108,7 @@ div #postform > * {
   display: flex;
   justify-content: flex-end;
   margin-top: 10px;
+  user-select: none;
 }
 
 button {

@@ -3,7 +3,7 @@
     <form>
       <input id="postTitle" placeholder="Title" v-model="title" required />
       <textarea
-        rows="4"
+        id="tArea"
         placeholder="What's on your mind?"
         v-model="content"
         required
@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import getPostFeed from "@/composables/getPostFeed";
+import getPostFeed from "@/composables/use-getPostFeed";
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({

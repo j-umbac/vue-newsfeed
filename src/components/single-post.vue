@@ -1,19 +1,17 @@
 <template>
-  <transition name="fade">
-    <div v-if="show">
-      <h3>{{ post.title }}</h3>
-      <br />
-      <p>{{ post.content }}</p>
+  <div v-if="show">
+    <h3>{{ post.title }}</h3>
+    <br />
+    <p>{{ post.content }}</p>
 
-      <div class="buttons">
-        <button>
-          <router-link :to="{ name: 'PostDetails', params: { id: post.id } }">
-            Edit
-          </router-link>
-        </button>
-      </div>
+    <div class="buttons">
+      <button>
+        <router-link :to="{ name: 'PostDetails', params: { id: post.id } }">
+          Edit
+        </router-link>
+      </button>
     </div>
-  </transition>
+  </div>
 </template>
 
 <script lang="ts">
@@ -31,24 +29,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.fade-enter-from {
-  opacity: 0;
-}
-.fade-enter-to {
-  opacity: 1;
-}
-.fade-enter-active {
-  transition: all 1s ease;
-}
-
-.fade-leave-from {
-  opacity: 1;
-}
-.fade-leave-to {
-  opacity: 0;
-}
-.fade-leave-active {
-  transition: all 1s ease;
+<style>
+p {
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgb(240, 240, 240);
 }
 </style>

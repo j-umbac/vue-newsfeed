@@ -1,4 +1,4 @@
-import PostInterface from "@/interface/postInterface";
+import PostInterface from "@/interface/post-interface";
 
 const postList: PostInterface[] = [
     {

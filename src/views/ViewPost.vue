@@ -16,14 +16,19 @@
         ></textarea>
       </form>
       <div class="buttons">
-        <button><router-link id="feed" to="/feed">Back</router-link></button>
+        <div><router-link to="/feed" class="btn">Back</router-link></div>
         <div>
-          <button @click="saveEdit">
-            <router-link id="feed" to="/feed">Save Edit</router-link>
-          </button>
-          <button @click.prevent="deletePost" id="deletBtn">
-            <router-link id="feed" to="/feed">Delete</router-link>
-          </button>
+          <router-link to="/feed" @click="saveEdit" class="btn"
+            >Save Edit</router-link
+          >
+
+          <router-link
+            to="/feed"
+            @click.prevent="deletePost"
+            id="deletBtn"
+            class="btn"
+            >Delete</router-link
+          >
         </div>
       </div>
     </div>
@@ -31,8 +36,8 @@
 </template>
 
 <script lang="ts">
-import postList from "@/data/postData";
-import PostInterface from "@/interface/postInterface";
+import postList from "@/data/post-data";
+import PostInterface from "@/interface/post-interface";
 import { defineComponent, onMounted, ref } from "vue";
 
 export default defineComponent({
@@ -63,21 +68,21 @@ export default defineComponent({
       }
     }
 
-    function saveEdit() {
+    const saveEdit = () => {
       if (confirm("Confirm post edits")) {
         alert("Edits Saved");
         posts.value.splice(index, 1, post);
         console.log(posts);
       }
-    }
+    };
 
-    function deletePost() {
+    const deletePost = () => {
       if (confirm("Confirm post delete")) {
         console.log("Post deleted");
         posts.value.splice(index, 1);
         console.log(posts);
       }
-    }
+    };
 
     return { key, posts, post, saveEdit, index, deletePost };
   },
@@ -91,5 +96,30 @@ export default defineComponent({
 }
 #deletBtn {
   background: crimson;
+}
+#deletBtn:hover {
+  background: rgb(202, 11, 49);
+}
+
+.buttons > * {
+  margin: 5px;
+  font-size: 0.9em;
+}
+
+.btn {
+  padding: 10px;
+  margin: auto 5px;
+  background: rgb(110, 172, 243);
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+}
+
+.btn > * {
+  color: white;
+}
+
+.btn:hover {
+  background-color: rgb(83, 140, 204);
 }
 </style>
