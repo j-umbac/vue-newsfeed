@@ -53,11 +53,11 @@ export default defineComponent({
       id: "",
     };
     onMounted(() => {
-      console.log("Mounted");
+      console.log("Post Mounted");
     });
 
     for (let i = 0; i < posts.value.length; i++) {
-      if (posts.value[i].id === props.id) {
+      if (posts.value[i].id === key.value) {
         console.log(posts.value[i].title);
         console.log(posts.value[i].id);
         post.title = posts.value[i].title;
@@ -84,7 +84,7 @@ export default defineComponent({
       }
     };
 
-    return { key, posts, post, saveEdit, index, deletePost };
+    return { post, saveEdit, deletePost };
   },
 });
 </script>

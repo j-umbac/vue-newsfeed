@@ -1,30 +1,24 @@
 <template>
-  <div v-if="show">
-    <h3>{{ post.title }}</h3>
-    <br />
-    <p>{{ post.content }}</p>
+  <h3>{{ post.title }}</h3>
+  <br />
+  <p>{{ post.content }}</p>
 
-    <div class="buttons">
-      <button>
-        <router-link :to="{ name: 'PostDetails', params: { id: post.id } }">
-          Edit
-        </router-link>
-      </button>
-    </div>
+  <div class="buttons">
+    <button>
+      <router-link :to="{ name: 'PostDetails', params: { id: post.id } }">
+        Edit
+      </router-link>
+    </button>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
   props: ["post"],
-
-  setup() {
-    const show = ref(false);
-    onMounted(() => (show.value = !show.value));
-
-    return { show };
+  setup(props) {
+    console.log(props.post.id);
   },
 });
 </script>

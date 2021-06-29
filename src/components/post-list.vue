@@ -1,16 +1,21 @@
 <template>
   <button @click="togglePost">Toggle Feed</button>
-  <transition-group tag="div" name="listpost" class="post-list" appear>
-    <!-- <div class="post-list" v-show="toggle"> -->
-    <div v-for="post in posts" :key="post.id" class="list" v-show="toggle">
-      <SinglePost :post="post" />
+
+  <transition-group tag="div" name="listpost" appear>
+    <div v-if="toggle" class="post-list">
+      <!-- <div class="post-list" v-show="toggle"> -->
+
+      <div v-for="post in posts" :key="post.id" class="list">
+        <SinglePost :post="post" />
+      </div>
+
+      <!-- </div> -->
     </div>
-    <!-- </div> -->
   </transition-group>
 </template>
 
 <script lang="ts">
-import { defineComponent, onUpdated, onMounted, ref } from "vue";
+import { defineComponent, ref } from "vue";
 import SinglePost from "./single-post.vue";
 
 export default defineComponent({
@@ -33,26 +38,17 @@ export default defineComponent({
 /*List Animations*/
 .listpost-enter-from {
   opacity: 0;
-  transform: scale(0.5);
-}
-.listpost-enter-to {
-  opacity: 1;
-  transform: scale(1);
+  transform: translateY(100px);
 }
 .listpost-enter-active {
-  transition: all 0.4s ease;
-}
-
-.listpost-leave-from {
-  opacity: 1;
-  transform: scale(1);
+  transition: all 0.3s ease;
 }
 .listpost-leave-to {
   opacity: 0;
-  transform: scale(0.5);
+  transform: translateY(100px);
 }
 .listpost-leave-active {
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
 }
 
 .listpost-move {
