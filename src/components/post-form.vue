@@ -37,12 +37,12 @@ export default defineComponent({
           content: content.value,
           id: title.value + String(Math.round(Math.random() * 100)),
         });
+
+        title.value = "";
+        content.value = "";
       } else {
         alert("Please complete the form");
       }
-
-      title.value = "";
-      content.value = "";
     }
 
     function clearForm() {
