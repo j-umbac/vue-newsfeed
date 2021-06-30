@@ -2,12 +2,7 @@
   <div>
     <form>
       <input id="postTitle" placeholder="Title" v-model="title" required />
-      <textarea
-        id="tArea"
-        placeholder="What's on your mind?"
-        v-model="content"
-        required
-      ></textarea>
+      <textarea id="tArea" placeholder="What's on your mind?" v-model="content" required></textarea>
       <div class="buttons">
         <button @click.prevent="publishPost">Post</button>
         <button @click.prevent="clearForm">Cancel</button>
@@ -17,20 +12,20 @@
 </template>
 
 <script lang="ts">
-import getPostFeed from "@/composables/use-getPostFeed";
-import { defineComponent, ref } from "vue";
+import getPostFeed from '@/composables/use-post';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
-  name: "PostForm",
+  name: 'PostForm',
   setup() {
     let { posts } = getPostFeed();
 
-    const title = ref("");
-    const content = ref("");
+    const title = ref('');
+    const content = ref('');
 
     function publishPost() {
-      if (title.value !== "" && content.value !== "") {
-        console.log("Post Added");
+      if (title.value.trim() !== '' && content.value !== '') {
+        console.log('Post Added');
 
         posts.value.unshift({
           title: title.value,
@@ -38,16 +33,16 @@ export default defineComponent({
           id: title.value + String(Math.round(Math.random() * 100)),
         });
 
-        title.value = "";
-        content.value = "";
+        title.value = '';
+        content.value = '';
       } else {
-        alert("Please complete the form");
+        alert('Please complete the form');
       }
     }
 
     function clearForm() {
-      title.value = "";
-      content.value = "";
+      title.value = '';
+      content.value = '';
     }
 
     getPostFeed();

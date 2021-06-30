@@ -9,9 +9,7 @@
       <br />
       <h3>Code source files on Github:</h3>
       <p>
-        <a href="https://github.com/j-umbac/vue-newsfeed"
-          >github.com/j-umbac/vue-newsfeed</a
-        >
+        <a href="https://github.com/j-umbac/vue-newsfeed">github.com/j-umbac/vue-newsfeed</a>
       </p>
     </div>
   </div>

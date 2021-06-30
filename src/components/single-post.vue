@@ -4,8 +4,8 @@
   <p>{{ post.content }}</p>
 
   <div class="buttons">
-    <button>
-      <router-link :to="{ name: 'PostDetails', params: { id: post.id } }">
+    <button @click="goToDetails">
+      <router-link :to="{ name: 'PostDetails', params: { id: post.id } }"> // use router.push instead
         Edit
       </router-link>
     </button>
@@ -13,12 +13,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import IPost from '@/interface/post';
+import router from '@/router';
+import { defineComponent, PropType } from 'vue';
 
 export default defineComponent({
-  props: ["post"],
+  props: {
+    post:{
+      type: Object as PropType<IPost>,
+      required: true,
+    }
+  },
+
   setup(props) {
     console.log(props.post.id);
+    function goToDetails(){
+      router.push({ name: 'PostDetails', params: { id: props.post.id } })
+    }
+
+    return { goToDetails }
   },
 });
 </script>

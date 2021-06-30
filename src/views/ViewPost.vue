@@ -2,33 +2,15 @@
   <div class="post-list">
     <div>
       <form>
-        <input
-          id="postTitle"
-          placeholder="Title"
-          v-model="post.title"
-          required
-        />
-        <textarea
-          rows="10"
-          placeholder="What's on your mind?"
-          v-model="post.content"
-          required
-        ></textarea>
+        <input id="postTitle" placeholder="Title" v-model="post.title" required />
+        <textarea rows="10" placeholder="What's on your mind?" v-model="post.content" required></textarea>
       </form>
       <div class="buttons">
         <div><router-link to="/feed" class="btn">Back</router-link></div>
         <div>
-          <router-link to="/feed" @click="saveEdit" class="btn"
-            >Save Edit</router-link
-          >
+          <router-link to="/feed" @click="saveEdit" class="btn">Save Edit</router-link>
 
-          <router-link
-            to="/feed"
-            @click.prevent="deletePost"
-            id="deletBtn"
-            class="btn"
-            >Delete</router-link
-          >
+          <router-link to="/feed" @click.prevent="deletePost" id="deletBtn" class="btn">Delete</router-link>
         </div>
       </div>
     </div>
@@ -36,24 +18,29 @@
 </template>
 
 <script lang="ts">
-import postList from "@/data/post-data";
-import PostInterface from "@/interface/post-interface";
-import { defineComponent, onMounted, ref } from "vue";
+import postList from '@/data/post-data';
+import IPost from '@/interface/post';
+import { defineComponent, onMounted, ref } from 'vue';
 
 export default defineComponent({
-  props: ["id"],
+  props: {
+    id: {
+      type: String,
+      required: false,
+    },
+  },
   setup(props) {
     const key = ref(props.id);
     const posts = ref(postList);
     let index = 0;
 
-    let post: PostInterface = {
-      title: "",
-      content: "",
-      id: "",
+    let post: IPost = {
+      title: '',
+      content: '',
+      id: '',
     };
     onMounted(() => {
-      console.log("Post Mounted");
+      console.log('Post Mounted');
     });
 
     for (let i = 0; i < posts.value.length; i++) {
@@ -69,16 +56,16 @@ export default defineComponent({
     }
 
     const saveEdit = () => {
-      if (confirm("Confirm post edits")) {
-        alert("Edits Saved");
+      if (confirm('Confirm post edits')) {
+        alert('Edits Saved');
         posts.value.splice(index, 1, post);
         console.log(posts);
       }
     };
 
     const deletePost = () => {
-      if (confirm("Confirm post delete")) {
-        console.log("Post deleted");
+      if (confirm('Confirm post delete')) {
+        console.log('Post deleted');
         posts.value.splice(index, 1);
         console.log(posts);
       }

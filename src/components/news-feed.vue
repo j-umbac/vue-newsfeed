@@ -10,13 +10,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from "vue";
-import PostList from "./post-list.vue";
-import getPostFeed from "../composables/use-getPostFeed";
-import PostForm from "./post-form.vue";
+import { defineComponent } from 'vue';
+import PostList from './post-list.vue';
+import getPostFeed from '../composables/use-post';
+import PostForm from './post-form.vue';
 
 export default defineComponent({
-  name: "NewsFeed",
+  name: 'NewsFeed',
   components: {
     PostList,
     PostForm,
