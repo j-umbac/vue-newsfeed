@@ -1,17 +1,21 @@
 <template>
   <header class="main">
     <div class="navigation">
-      <router-link id="home" to="/">Home</router-link>
-      <router-link id="feed" to="/feed">Feed</router-link>
+      <router-link :to="RouteName.Home">Home</router-link>
+      <router-link :to="RouteName.Feed" exact>Feed</router-link>
     </div>
   </header>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
+import { RouteName } from '@/constants/route-names';
 
 export default defineComponent({
-  name: "AppHeader",
+  name: 'AppHeader',
+  setup() {
+    return { RouteName }
+  }
 });
 </script>
 

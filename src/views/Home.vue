@@ -17,6 +17,7 @@
   </div>
 </template>
 
+
 <style scoped>
 .bod {
   display: flex;

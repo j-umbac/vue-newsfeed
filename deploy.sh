@@ -14,8 +14,8 @@ cd dist
 
 
 git init
-git add -A
-git commit -m 'Fixed title and form clearing when either title or text is missing'
+git add .
+git commit -m 'Cleaned the code'
 
 # if you are deploying to https://<USERNAME>.github.io
 # git push -f git@github.com:j-umbac/j-umbac.github.io.git main

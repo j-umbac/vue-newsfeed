@@ -3,24 +3,26 @@
 
   <transition-group tag="div" name="listpost" appear>
     <div v-if="toggle" class="post-list">
-      <!-- <div class="post-list" v-show="toggle"> -->
-
       <div v-for="post in posts" :key="post.id" class="list">
         <SinglePost :post="post" />
       </div>
-
-      <!-- </div> -->
     </div>
   </transition-group>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
-import SinglePost from "./single-post.vue";
+import { defineComponent, ref, PropType } from 'vue';
+import SinglePost from './single-post.vue';
+import IPost from '@/interface/post';
 
 export default defineComponent({
-  name: "PostList",
-  props: ["posts"],
+  name: 'PostList',
+  props: {
+    posts: {
+      type: Array as PropType<IPost[]>,
+      required: true,
+    },
+  },
   components: { SinglePost },
   setup() {
     const toggle = ref(true);
@@ -50,9 +52,8 @@ export default defineComponent({
 .listpost-leave-active {
   transition: all 0.3s ease;
 }
-
 .listpost-move {
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 /*Styles*/

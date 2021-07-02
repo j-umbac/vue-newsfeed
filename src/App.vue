@@ -19,6 +19,7 @@ export default defineComponent({
   name: "App",
   components: {
     AppHeader,
+
   },
 });
 </script>

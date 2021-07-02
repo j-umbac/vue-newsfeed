@@ -1,13 +1,8 @@
 <template>
   <div>
     <form>
-      <input id="postTitle" placeholder="Title" v-model="title" required />
-      <textarea
-        id="tArea"
-        placeholder="What's on your mind?"
-        v-model="content"
-        required
-      ></textarea>
+      <input id="postTitle" placeholder="Title" v-model="title"/>
+      <textarea id="tArea" placeholder="What's on your mind?" v-model="content"></textarea>
       <div class="buttons">
         <button @click.prevent="publishPost">Post</button>
         <button @click.prevent="clearForm">Cancel</button>
@@ -17,37 +12,34 @@
 </template>
 
 <script lang="ts">
-import getPostFeed from "@/composables/use-getPostFeed";
-import { defineComponent, ref } from "vue";
+import getPostFeed from '@/composables/use-Posts';
+import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
-  name: "PostForm",
+  name: 'PostForm',
   setup() {
-    let { posts } = getPostFeed();
+    let { addPost } = getPostFeed();
 
-    const title = ref("");
-    const content = ref("");
+    const title = ref('');
+    const content = ref('');
 
     function publishPost() {
-      if (title.value !== "" && content.value !== "") {
-        console.log("Post Added");
-
-        posts.value.unshift({
-          title: title.value,
-          content: content.value,
-          id: title.value + String(Math.round(Math.random() * 100)),
-        });
-
-        title.value = "";
-        content.value = "";
+      if (title.value.trim() !== '' && content.value.trim() !== '') {
+        addPost(title.value, content.value);
+        title.value = '';
+        content.value = '';
       } else {
-        alert("Please complete the form");
+        alert('Please complete the form');
+        if (title.value.trim() === '' && content.value.trim() === '') {
+          title.value = '';
+          content.value = '';
+        }
       }
     }
 
     function clearForm() {
-      title.value = "";
-      content.value = "";
+      title.value = '';
+      content.value = '';
     }
 
     getPostFeed();

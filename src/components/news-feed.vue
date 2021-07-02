@@ -10,20 +10,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from "vue";
-import PostList from "./post-list.vue";
-import getPostFeed from "../composables/use-getPostFeed";
-import PostForm from "./post-form.vue";
+import { defineComponent } from 'vue';
+import PostList from './post-list.vue';
+import getPostFeed from '../composables/use-Posts';
+import PostForm from './post-form.vue';
 
 export default defineComponent({
-  name: "NewsFeed",
+  name: 'NewsFeed',
   components: {
     PostList,
     PostForm,
   },
   setup() {
     const { posts } = getPostFeed();
-
     return { posts };
   },
 });
@@ -117,6 +116,7 @@ button {
   background: rgb(110, 172, 243);
   border-radius: 5px;
   color: white;
+  cursor: pointer;
 }
 
 button > * {

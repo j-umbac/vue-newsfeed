@@ -1,13 +1,15 @@
 <template>
   <div class="post-list">
     <div>
-        <h3>{{post.title}}</h3>
-        <br>
-        <p>{{post.content}}</p>
-    <div class="buttons">
+      <form>
+        <input id="postTitle" placeholder="Title" v-model="post.title" required />
+        <textarea rows="10" placeholder="What's on your mind?" v-model="post.content" required></textarea>
+      </form>
+      <div class="buttons">
         <div><button @click="goBack" class="btn">Back</button></div>
         <div>
-    <button @click="goToEdit" class="btn">Edit</button>
+          <button @click="editSave" class="btn">Save Edit</button>
+          <button @click="delPost" class="btn" id="deleteBtn">Delete</button>
         </div>
       </div>
     </div>
@@ -30,38 +32,53 @@ export default defineComponent({
 
   setup(props) {
     const key = ref(props.id);
-    const { posts, toEditView  } = getPostFeed();
+    const { posts, saveEdit, deletePost } = getPostFeed();
+    let index = 0;
 
     let post: IPost = {
       title: '',
       content: '',
       id: 0,
     };
+    onMounted(() => {
+      console.log('Post Mounted');
+    });
 
     for (let i = 0; i < posts.value.length; i++) {
-      if (posts.value[i].id ==  key.value) {
+      if (posts.value[i].id == key.value) {
+        index = i;
         post.title = posts.value[i].title;
         post.content = posts.value[i].content;
         post.id = posts.value[i].id;
-      } 
+      }
     }
-    
-    function goToEdit() {
-      toEditView(post.id);
+
+    function delPost() {
+      if (deletePost(index)) {
+        router.replace('/feed');
+      }
+    }
+
+    function editSave() {
+      if (post.title.trim() !== '' && post.content.trim() !== ''){
+        if (saveEdit(post, index)) {
+          router.go(-1);
+        }
+      } else {
+        alert('Please dont leave title and content blank');
+      }
+      
     }
     function goBack(){
       router.go(-1);
     }
 
-    return { post, goToEdit, goBack };
+    return { post, editSave, delPost, goBack };
   },
 });
 </script>
 
 <style scoped>
-h3 {
-    text-decoration: none;
-}
 .buttons {
   display: flex;
   justify-content: space-between;
