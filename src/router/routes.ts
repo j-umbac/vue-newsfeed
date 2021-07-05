@@ -36,7 +36,14 @@ const routes: RouteRecordRaw[] = [
       import("../views/ViewPost.vue"),
     props: true,
 
-  }
+  },
+  {
+    path: "/:pathMatch(.*)",
+    name: "NotFound",
+    component: () =>
+      import("../views/NotFound.vue"),
+
+  },
 ];
 
 export default routes;

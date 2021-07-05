@@ -1,8 +1,8 @@
 <template>
   <header class="main">
     <div class="navigation">
-      <router-link :to="RouteName.Home">Home</router-link>
-      <router-link :to="RouteName.Feed" exact>Feed</router-link>
+      <router-link :to="'/' + RouteName.Home">Home</router-link
+      ><router-link :to="'/' + RouteName.Feed">Feed</router-link>
     </div>
   </header>
 </template>
@@ -14,8 +14,8 @@ import { RouteName } from '@/constants/route-names';
 export default defineComponent({
   name: 'AppHeader',
   setup() {
-    return { RouteName }
-  }
+    return { RouteName };
+  },
 });
 </script>
 

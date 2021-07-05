@@ -2,8 +2,8 @@
   <div class="post-list">
     <div>
       <form>
-        <input id="postTitle" placeholder="Title" v-model="post.title" required />
-        <textarea rows="10" placeholder="What's on your mind?" v-model="post.content" required></textarea>
+        <input id="postTitle" placeholder="Title" v-model="post.title" />
+        <textarea rows="10" placeholder="What's on your mind?" v-model="post.content"></textarea>
       </form>
       <div class="buttons">
         <div><button @click="goBack" class="btn">Back</button></div>
@@ -21,6 +21,7 @@ import IPost from '@/interface/post';
 import getPostFeed from '../composables/use-Posts';
 import { defineComponent, onMounted, ref } from 'vue';
 import router from '@/router';
+import { RouteName } from '@/constants/route-names';
 
 export default defineComponent({
   props: {
@@ -55,21 +56,20 @@ export default defineComponent({
 
     function delPost() {
       if (deletePost(index)) {
-        router.replace('/feed');
+        router.push('/' + RouteName.Feed);
       }
     }
 
     function editSave() {
-      if (post.title.trim() !== '' && post.content.trim() !== ''){
+      if (post.title.trim() !== '' && post.content.trim() !== '') {
         if (saveEdit(post, index)) {
           router.go(-1);
         }
       } else {
         alert('Please dont leave title and content blank');
       }
-      
     }
-    function goBack(){
+    function goBack() {
       router.go(-1);
     }
 
